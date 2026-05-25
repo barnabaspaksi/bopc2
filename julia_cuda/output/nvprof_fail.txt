@@ -1,0 +1,21 @@
+pc26s42@tesla:~/bopc2/julia_cuda/src$ nvprof --metrics warp_execution_efficiency ./juliaset_gpu -r 20000 20000 -n 1 --blocksize 1 1
+======== Warning: Skipping profiling on device 0 since profiling is not supported on devices with compute capability 7.5 and higher.
+                  Use NVIDIA Nsight Compute for GPU profiling and NVIDIA Nsight Systems for GPU tracing and CPU sampling.
+                  Refer https://developer.nvidia.com/tools-overview for more details.
+
+==52163== NVPROF is profiling process 52163, command: ./juliaset_gpu -r 20000 20000 -n 1 --blocksize 1 1
+0;20000;20000;0.5;1;1;3450746
+==52163== Profiling application: ./juliaset_gpu -r 20000 20000 -n 1 --blocksize 1 1
+==52163== Profiling result:
+No events/metrics were profiled.
+pc26s42@tesla:~/bopc2/julia_cuda/src$ ncu --metrics smsp__thread_inst_executed_per_inst_issued.pct ./juliaset_gpu -r 20000 20000 -n 1 --blocksize 1 1
+==PROF== Connected to process 52201 (/home/student/pc26s42/bopc2/julia_cuda/src/juliaset_gpu)
+
+==ERROR== Failed to open/create lock file /tmp/nsight-compute-lock. Please check that this process has write permissions on this file. See https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#faq for more details.
+
+==ERROR== InterprocessLockFailed
+==ERROR== Failed to profile "julia_kernel_gpu" in process 52201
+==PROF== Trying to shutdown target application
+==ERROR== The application returned an error code (9).
+==ERROR== An error occurred while trying to profile.
+==WARNING== No kernels were profiled.
