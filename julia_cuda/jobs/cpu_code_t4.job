@@ -1,18 +1,22 @@
-#! /bin/bash
+#!/bin/bash
 
-#SBATCH -t 5
-#SBATCH -p q_student_gpu
-#SBATCH --gpus=2
-# #SBATCH --gres=gpu:tesla:2
-# #SBATCH --gres=gpu:ampere:1
+#SBATCH -t 20
+#SBATCH -p q_student
 #SBATCH -c 32
+#SBATCH --job-name=julia_cpu_bench
 
+# Keep your environment sourcing
 . vars_in.sh
 
 BINARY="../src/juliaset_cpu"
 
-for SIZE in "${SIZE_LIST[@]}"
+# Ensure the output directory exists
+mkdir -p ../output/cpu_vs_gpu
+
+for SIZE in 1000 2000 4000 8000 16000
 do 
-  $BINARY -r $SIZE $SIZE -n $NREP -o "task4_cpu_${SIZE}.csv"
+  echo "Benchmarking CPU resolution ${SIZE}x${SIZE}..."
+  # Piping directly into the scaling results file 
+  $BINARY -r $SIZE $SIZE -n 5 >> ../output/cpu_vs_gpu/benchmark_cpu_scaling.txt
 done
 
