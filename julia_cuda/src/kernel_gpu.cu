@@ -49,6 +49,11 @@ void julia_kernel(float *julia_set, Complex c, float scale, int res_x, int res_y
     int grid_size = (total_pixels + block.x * block.y - 1) / (block.x * block.y); //round up division
 
     julia_kernel_gpu<<<grid_size,block>>>(d_julia_set, c, scale, res_x, res_y, max_iter, max_mag, x_scale, y_scale);
+    cudaError_t err = cudaGetLastError();
+    if (err != cudaSuccess) {
+        std::string error_msg = cudaGetErrorString(err);
+        std::cout << "CUDA Error for block size " << block.x << "x" << block.y << ": " << error_msg << std::endl;
+    }
     cudaDeviceSynchronize();
     cudaMemcpy(julia_set, d_julia_set, mem_size, cudaMemcpyDeviceToHost);
     cudaFree(d_julia_set);
