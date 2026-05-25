@@ -1,0 +1,15 @@
+pc26s42@tesla:~/bopc2/julia_cuda/src$ mkdir -p ~/tmp && TMPDIR=~/tmp ncu --metrics smsp__thread_inst_executed_per_inst_issued.pct ./juliaset_gpu -r 20000 20000 -n 1 --blocksize 1 1
+==PROF== Connected to process 52261 (/home/student/pc26s42/bopc2/julia_cuda/src/juliaset_gpu)
+==PROF== Profiling "julia_kernel_gpu" - 0: 0%....50%
+==WARNING== Launching the workload is taking more time than expected. If this continues to hang, terminate the profile and re-try by profiling the range of all related launches using '--replay-mode range'. See https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#replay for more details.
+....100% - 1 pass
+0;20000;20000;0.5;1;1;7892795
+==PROF== Disconnected from process 52261
+[52261] juliaset_gpu@127.0.0.1
+  julia_kernel_gpu(float *, Complex, float, int, int, int, float, float, float) (20000, 20000, 1)x(1, 1, 1), Context 1, Stream 7, Device 0, CC 7.5
+    Section: Command line profiler metrics
+    ---------------------------------------------- ----------- ------------
+    Metric Name                                    Metric Unit Metric Value
+    ---------------------------------------------- ----------- ------------
+    smsp__thread_inst_executed_per_inst_issued.pct                  (!) n/a
+    ---------------------------------------------- ----------- ------------
