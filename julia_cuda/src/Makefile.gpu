@@ -5,8 +5,8 @@ all: juliaset_gpu
 
 solution: juliaset_gpu_solution
 
-juliaset_gpu: juliaset.o image.o cli_parser.o kernel_gpu.o
-	$(CPP) $(CPPFLAGS) -o juliaset_gpu juliaset.o image.o cli_parser.o kernel_gpu.o
+juliaset_gpu: juliaset.o image.o cli_parser.o kernel_gpu_2.o
+	$(CPP) $(CPPFLAGS) -o juliaset_gpu juliaset.o image.o cli_parser.o kernel_gpu_2.o
 
 juliaset_gpu_solution: juliaset.o image.o cli_parser.o kernel_gpu_solution.o
 	$(CPP) $(CPPFLAGS) -o juliaset_gpu juliaset.o image.o cli_parser.o kernel_gpu_solution.o
@@ -23,7 +23,7 @@ cli_parser.o: cli_parser.cpp cli_parser.hpp
 %.o: %.cu
 	$(CPP) $(CPPFLAGS) -c $< 
 
-#kernel_gpu.o: kernel_cpu.cu kernel.hpp
+#kernel_gpu_2.o: kernel_cpu_2.cu kernel.hpp
 #	$(CPP) $(CPPFLAGS) -c kernel_gpu.cu
 
 #kernel_gpu_solution.o: kernel_cpu_solution.cu kernel.hpp

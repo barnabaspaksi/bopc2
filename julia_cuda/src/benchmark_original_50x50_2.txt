@@ -1,0 +1,10 @@
+CUDA Error for block size 50x50: invalid configuration argument
+CUDA Error for block size 50x50: invalid configuration argument
+CUDA Error for block size 50x50: invalid configuration argument
+CUDA Error for block size 50x50: invalid configuration argument
+CUDA Error for block size 50x50: invalid configuration argument
+0;1000;1000;0.5;50;50;384784
+1;1000;1000;0.5;50;50;764
+2;1000;1000;0.5;50;50;761
+3;1000;1000;0.5;50;50;732
+4;1000;1000;0.5;50;50;724
